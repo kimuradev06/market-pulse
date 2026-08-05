@@ -1,13 +1,40 @@
+const marketItems = [
+  {
+    name: "日経平均",
+    value: "42,180.40",
+    change: "+1.24%",
+    description: "国内株式は堅調",
+  },
+  {
+    name: "S&P 500",
+    value: "6,312.25",
+    change: "+0.73%",
+    description: "米国株は上昇",
+  },
+  {
+    name: "USD / JPY",
+    value: "147.32",
+    change: "-0.42%",
+    description: "円高方向に推移",
+  },
+  {
+    name: "米国10年債利回り",
+    value: "4.18%",
+    change: "-0.05pt",
+    description: "長期金利は低下",
+  },
+];
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-slate-950 text-white">
-      <div className="mx-auto max-w-6xl px-8 py-12">
+      <div className="mx-auto max-w-6xl px-6 py-12">
         <header className="mb-12">
           <p className="text-sm font-semibold text-cyan-400">
             MARKET INTELLIGENCE
           </p>
 
-          <h1 className="mt-2 text-5xl font-bold">
+          <h1 className="mt-2 text-4xl font-bold sm:text-5xl">
             Market Pulse
           </h1>
 
@@ -16,14 +43,55 @@ export default function Home() {
           </p>
         </header>
 
-        <section className="rounded-2xl border border-slate-800 bg-slate-900 p-8">
-          <h2 className="text-2xl font-semibold">
-            Today's Summary
+        <section className="mb-12 rounded-2xl border border-slate-800 bg-slate-900 p-8">
+          <p className="text-sm font-semibold text-cyan-400">
+            TODAY&apos;S SUMMARY
+          </p>
+
+          <h2 className="mt-2 text-2xl font-semibold">
+            本日のマーケット概況
           </h2>
 
           <p className="mt-4 leading-8 text-slate-300">
             ここにAIによるマーケット要約が表示されます。
           </p>
+        </section>
+
+        <section>
+          <div className="mb-5">
+            <p className="text-sm font-semibold text-cyan-400">
+              MARKET OVERVIEW
+            </p>
+
+            <h2 className="mt-2 text-2xl font-semibold">
+              主要マーケット
+            </h2>
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {marketItems.map((item) => (
+              <article
+                key={item.name}
+                className="rounded-2xl border border-slate-800 bg-slate-900 p-6"
+              >
+                <p className="text-sm text-slate-400">
+                  {item.name}
+                </p>
+
+                <p className="mt-3 text-2xl font-bold">
+                  {item.value}
+                </p>
+
+                <p className="mt-2 text-sm font-semibold text-emerald-400">
+                  {item.change}
+                </p>
+
+                <p className="mt-4 text-sm text-slate-400">
+                  {item.description}
+                </p>
+              </article>
+            ))}
+          </div>
         </section>
       </div>
     </main>

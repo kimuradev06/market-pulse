@@ -1,3 +1,4 @@
+import MarketCard from "@/components/MarketCard";
 const marketItems = [
   {
     name: "日経平均",
@@ -70,26 +71,13 @@ export default function Home() {
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {marketItems.map((item) => (
-              <article
+              <MarketCard
                 key={item.name}
-                className="rounded-2xl border border-slate-800 bg-slate-900 p-6"
-              >
-                <p className="text-sm text-slate-400">
-                  {item.name}
-                </p>
-
-                <p className="mt-3 text-2xl font-bold">
-                  {item.value}
-                </p>
-
-                <p className="mt-2 text-sm font-semibold text-emerald-400">
-                  {item.change}
-                </p>
-
-                <p className="mt-4 text-sm text-slate-400">
-                  {item.description}
-                </p>
-              </article>
+                name={item.name}
+                value={item.value}
+                change={item.change}
+                description={item.description}
+              />
             ))}
           </div>
         </section>

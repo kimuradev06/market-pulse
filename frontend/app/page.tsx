@@ -1,7 +1,21 @@
 import MarketCard from "@/components/MarketCard";
 import { marketItems } from "@/data/mock";
+import ExchangeRateCard from "@/components/ExchangeRateCard";
+import type { ExchangeRate } from "@/types/market";
+export default async function Home() {
+  const response = await fetch(
+    "http://localhost:3000/api/exchange-rate",
+    {
+      cache: "no-store",
+    },
+  );
 
-export default function Home() {
+  if (!response.ok) {
+    throw new Error("為替データの取得に失敗しました。");
+  }
+
+  const exchangeRate = (await response.json()) as ExchangeRate;
+
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       <div className="mx-auto max-w-6xl px-6 py-12">
@@ -55,8 +69,12 @@ export default function Home() {
               />
             ))}
           </div>
+          <div className="mt-4">
+            <ExchangeRateCard rate={exchangeRate} />
+          </div>
         </section>
       </div>
     </main>
   );
 }
+

@@ -24,3 +24,15 @@ export const marketItems = [
         description: "長期金利は低下",
     },
 ];
+
+import type { ExchangeRate } from "@/types/market";
+
+export const usdJpy: ExchangeRate = {
+    pair: "USD/JPY",
+    price: 157.42,
+    change: 0.38,
+    changePercent: 0.24,
+    dayHigh: 157.88,
+    dayLow: 156.91,
+    updatedAt: "2026-08-05 21:30 JST",
+};

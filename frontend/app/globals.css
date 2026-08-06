@@ -1,26 +1,45 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* ダークテーマ固定（金融機関向け Morning Terminal） */
+  --background: #0b1120; /* 濃いSlate/Charcoal */
+  --surface: #0f172a; /* パネル背景 */
+  --surface-2: #111a2e; /* ネスト要素 */
+  --border: #1e293b;
+  --foreground: #e2e8f0;
+  --muted: #94a3b8;
+  --accent: #22d3ee; /* シアン */
+  --up: #34d399; /* 上昇: 緑 */
+  --down: #f43f5e; /* 下落: 赤 */
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-up: var(--up);
+  --color-down: var(--down);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: dark;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 数値の等幅表示（金融データの視認性向上） */
+.tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
 }
